@@ -11,6 +11,7 @@
     transition: background 0.3s;
     position: fixed;
     top: 0;
+    z-index: 3;
 }
 button{
     height: 48px;

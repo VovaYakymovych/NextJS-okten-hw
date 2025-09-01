@@ -1,6 +1,6 @@
 import {getApiData} from "@/services/api.service";
 import {IUser} from "@/models/IUser";
-import User from "@/components/UsersComponents/user/User";
+import User from "@/components/UsersComponents/User/User";
 
 
 const Users = async () => {

@@ -1,9 +1,10 @@
+import Comments from "@/components/CommentsComponents/Comments";
 
 
 const CommentsPage = () => {
     return (
-        <div>
-
+        <div style={{marginTop: 100}}>
+            <Comments/>
         </div>
     );
 };
