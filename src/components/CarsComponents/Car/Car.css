@@ -1,0 +1,17 @@
+.Car{
+    width: 200px;
+    height: 200px;
+
+    background-color: crimson;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.CarInfo{
+    color: #dadee3;
+    font-weight: 700;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.4rem;
+}

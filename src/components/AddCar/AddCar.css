@@ -1,0 +1,20 @@
+.formComponent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.formCar{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.formCar input{
+    padding: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 340px;
+}
