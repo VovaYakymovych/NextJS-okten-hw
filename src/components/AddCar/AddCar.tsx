@@ -4,28 +4,23 @@ import React from 'react';
 import {ICar} from "@/models/ICar";
 import {saveCar} from "@/services/api.service";
 import './AddCar.css'
+import Form from "next/form";
 
 const AddCar = () => {
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const saveAction = async (formData:FormData) => {
 
-        const form = e.currentTarget;
-        const formData = new FormData(form);
-
-        const newCar: ICar = {
+        const newCar:ICar = {
             brand: formData.get("brand") as string,
             year: Number(formData.get("year")),
             price: Number(formData.get("price")),
         };
-
         console.log(newCar);
         await saveCar(newCar);
-        form.reset();
     };
 
     return (
         <div className={'formComponent'}>
-            <form className={'formCar'} onSubmit={handleSubmit}>
+            <Form className={'formCar'} action={saveAction}>
                 <div className="inputDiv">
                     <input type="text" name="brand" placeholder="Brand" required />
                 </div>
@@ -39,7 +34,7 @@ const AddCar = () => {
                 </div>
 
                 <button type="submit">Submit</button>
-            </form>
+            </Form>
         </div>
     );
 };
