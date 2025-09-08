@@ -1,39 +1,44 @@
+'use client'
 
+import {useForm} from "react-hook-form";
 import React from 'react';
 import {ICar} from "@/models/ICar";
 import {saveCar} from "@/services/api.service";
 import './AddCar.css'
-import Form from "next/form";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {carValidator} from "@/services/joi/carValidator";
 
 const AddCar = () => {
-    const saveAction = async (formData:FormData) => {
 
-        const newCar:ICar = {
-            brand: formData.get("brand") as string,
-            year: Number(formData.get("year")),
-            price: Number(formData.get("price")),
-        };
-        console.log(newCar);
-        await saveCar(newCar);
-    };
+    const {handleSubmit, register, formState:{errors} } = useForm<ICar>({mode:"all",resolver:joiResolver(carValidator)})
+
+    const formSubmit = async (data:ICar) =>{
+        await saveCar(data)
+        console.log(data)
+    }
 
     return (
         <div className={'formComponent'}>
-            <Form className={'formCar'} action={saveAction}>
-                <div className="inputDiv">
-                    <input type="text" name="brand" placeholder="Brand" required />
+            <form className={'formCar'} onSubmit={handleSubmit(formSubmit)}>
+
+                <div className={'inputDiv'}>
+                    <input type="text" placeholder={'Brand'} {...register('brand')}/>
+                    <div>{errors.brand?.message}</div>
                 </div>
 
-                <div className="inputDiv">
-                    <input type="number" name="year" placeholder="Year" required />
+                <div className={'inputDiv'}>
+                    <input type="number" placeholder={'Year'} {...register('year')}/>
+                    <div>{errors.year?.message}</div>
                 </div>
 
-                <div className="inputDiv">
-                    <input type="number" name="price" placeholder="Price" required />
+
+                <div className={'inputDiv'}>
+                    <input type="number" placeholder={'Price'} {...register('price')}/>
+                    <div>{errors.price?.message}</div>
                 </div>
 
-                <button type="submit">Submit</button>
-            </Form>
+                <button>Submit</button>
+            </form>
         </div>
     );
 };
