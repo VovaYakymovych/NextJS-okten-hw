@@ -6,7 +6,7 @@ import {ICar} from "@/models/ICar";
 import {saveCar} from "@/services/api.service";
 import './AddCar.css'
 import {joiResolver} from "@hookform/resolvers/joi";
-import {carValidator} from "@/services/joi/carValidator";
+import {carValidator} from "@/joi/carValidator";
 
 const AddCar = () => {
 
